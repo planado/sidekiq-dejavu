@@ -1,5 +1,8 @@
 require "sidekiq"
+require "sidekiq/api"
 require "sidekiq/dejavu"
+
+Sidekiq::Config.attr_reader(:options)
 
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
