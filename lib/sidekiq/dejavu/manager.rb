@@ -6,7 +6,7 @@ module Sidekiq
       attr_accessor :schedules, :scheduled_set
 
       def initialize(schedules = {}, scheduled_set = Sidekiq::ScheduledSet.new)
-        @schedules = schedules
+        @schedules = schedules.transform_values { _1.transform_keys(&:to_s) }
         @scheduled_set = scheduled_set
       end
 
